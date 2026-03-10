@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Elite Crown Barber</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Oswald',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+/* estado inicial */
+
+.reveal-left,
+.reveal-right,
+.reveal-zoom{
+opacity:0;
+transition:all 1s ease;
+}
+
+/* izquierda */
+
+.reveal-left{
+transform:translateX(-80px);
+}
+
+/* derecha */
+
+.reveal-right{
+transform:translateX(80px);
+}
+
+/* zoom */
+
+.reveal-zoom{
+transform:scale(0.8);
+}
+
+/* cuando aparecen */
+
+.active{
+opacity:1;
+transform:translateX(0) scale(1);
+}
+
+/* hero */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+color:white;
+overflow:hidden;
+}
+
+/* SLIDER */
+
+.slider{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-2;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+animation:slider 24s infinite;
+}
+
+.slide:nth-child(1){
+background-image:url("img/1.jfif");
+animation-delay:0s;
+}
+
+.slide:nth-child(2){
+background-image:url("img/2.jfif");
+animation-delay:6s;
+}
+
+.slide:nth-child(3){
+background-image:url("img/3.avif");
+animation-delay:12s;
+}
+
+.slide:nth-child(4){
+background-image:url("img/4.jfif");
+animation-delay:18s;
+}
+
+@keyframes slider{
+0%{opacity:0}
+10%{opacity:1}
+30%{opacity:1}
+40%{opacity:0}
+100%{opacity:0}
+}
+
+/* SOMBRAS */
+
+.hero::after{
+content:"";
+position:absolute;
+bottom:0;
+width:100%;
+height:200px;
+background:linear-gradient(transparent, rgba(0,0,0,0.95));
+z-index:-1;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+/*background:rgba(0,0,0,0.45);*/
+background:rgba(0,0,0,0.25);
+z-index:-1;
+}
+
+/* LOGO */
+
+.logo{
+position:absolute;
+top:110px;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+}
+
+/*.logo-icon{
+font-size:55px;
+color:#c8a25a;
+margin-bottom:15px;
+text-shadow:0 4px 12px rgba(0,0,0,0.9);
+}*/
+
+.logo-icon{
+font-size:55px;
+color:#c8a25a;
+margin-bottom:15px;
+text-shadow:0 4px 12px rgba(0,0,0,0.9);
+
+animation:shine 4s infinite;
+}
+
+@keyframes shine{
+0%{filter:brightness(1);}
+50%{filter:brightness(1.4);}
+100%{filter:brightness(1);}
+}
+
+.logo h1{
+letter-spacing:6px;
+font-size:38px;
+font-weight:600;
+/*text-shadow:0 3px 8px rgba(0,0,0,0.6);*/
+text-shadow:0 4px 12px rgba(0,0,0,0.9);
+
+}
+
+.logo p{
+letter-spacing:5px;
+font-size:13px;
+color:#c8a25a;
+text-shadow:0 4px 12px rgba(0,0,0,0.9);
+}
+
+.logo::after{
+content:"";
+display:block;
+width:80px;
+height:2px;
+background:#c8a25a;
+margin:12px auto 0;
+}
+/* MENU */
+
+.menu{
+position:absolute;
+bottom:40px;
+display:flex;
+gap:40px;
+align-items:center;
+z-index:2;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-size:16px;
+letter-spacing:1px;
+transition:0.3s;
+position:relative;
+}
+
+/* SUBRAYADO SOLO PARA LINKS */
+
+.menu a:not(.btn)::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#c8a25a;
+transition:0.3s;
+}
+
+.menu a:not(.btn):hover::after{
+width:100%;
+}
+
+.menu a:not(.btn):hover{
+color:#c8a25a;
+}
+
+/* BOTON CTA */
+
+.btn{
+background:#c8a25a;
+padding:12px 24px;
+color:white;
+font-weight:600;
+}
+
+.btn:hover{
+background:#a38349;
+transform:translateY(-2px);
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* ================= */
+/* SECCION SERVICIOS */
+/* ================= */
+
+.servicios{
+background:#f4f4f4;
+/*background:#111;*/
+padding:80px 60px;
+}
+
+/* TITULO */
+
+.titulo-servicios{
+text-align:center;
+margin-bottom:50px;
+}
+
+.titulo-servicios span{
+color:#c8a25a;
+font-size:18px;
+letter-spacing:3px;
+position:relative;
+}
+
+.titulo-servicios span::before,
+.titulo-servicios span::after{
+content:"";
+position:absolute;
+top:50%;
+width:120px;
+height:2px;
+background:#c8a25a;
+}
+
+.titulo-servicios span::before{
+right:120%;
+}
+
+.titulo-servicios span::after{
+left:120%;
+}
+
+.titulo-servicios h2{
+font-size:55px;
+color:#3b1d0f;
+letter-spacing:4px;
+}
+
+/* GRID */
+
+.servicios-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+/* ITEM */
+
+.servicio{
+position:relative;
+overflow:hidden;
+}
+
+.servicio img{
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+transition:0.5s;
+}
+
+/* ZOOM HOVER */
+
+.servicio:hover img{
+transform:scale(1.1);
+}
+
+/* BARRA TITULO */
+
+.servicio-titulo{
+background:#b79a63;
+color:white;
+text-align:center;
+padding:14px;
+font-size:16px;
+letter-spacing:2px;
+font-weight:500;
+}
+
+@media (max-width:900px){
+
+.servicios-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:500px){
+
+.servicios-grid{
+grid-template-columns:1fr;
+}
+
+.titulo-servicios h2{
+font-size:36px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="slider">
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+<div class="slide"></div>
+</div>
+
+<div class="logo">
+
+<div class="logo-icon">
+<i class="fa-solid fa-crown"></i>
+</div>
+<h1>ELITE CROWN</h1>
+<p>BARBER</p>
+</div>
+
+<nav class="menu">
+<a href="#">HOME</a>
+<a href="#">SERVICIOS</a>
+<a href="#">TRABAJOS</a>
+
+<a href="#" class="btn">RESERVAR TURNO</a>
+
+<a href="#">NOSOTROS</a>
+<a href="#">PRODUCTOS</a>
+<a href="#">CONTACTO</a>
+</nav>
+
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios reveal-zoom" id="servicios">
+
+<div class="titulo-servicios">
+<span class="reveal-left">NUESTROS</span>
+<h2 class="reveal-right">SERVICIOS</h2>
+</div>
+
+<div class="servicios-grid">
+
+<div class="servicio">
+<img src="img/corteBarba.avif">
+<div class="servicio-titulo">CORTE DE BARBA</div>
+</div>
+
+<div class="servicio">
+<img src="img/corteHombre.avif">
+<div class="servicio-titulo">CORTE DE HOMBRE</div>
+</div>
+
+<div class="servicio">
+<img src="img/corteMujer.avif">
+<div class="servicio-titulo">CORTE DE MUJER</div>
+</div>
+
+<div class="servicio">
+<img src="img/colorReflejo.avif">
+<div class="servicio-titulo">COLOR Y REFLEJOS</div>
+</div>
+
+<div class="servicio">
+<img src="img/alisado.jpg">
+<div class="servicio-titulo">SHOCK Y ALISADO</div>
+</div>
+
+<div class="servicio">
+<img src="img/peinados.avif">
+<div class="servicio-titulo">PEINADOS</div>
+</div>
+
+</div>
+
+</section>
+</body>
+
+<script>
+
+function reveal() {
+  const elements = document.querySelectorAll(".reveal-left, .reveal-right, .reveal-zoom");
+
+  elements.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 150) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", reveal);
+reveal(); // ← importante para que funcione al cargar
+</script>
+
+</html>
