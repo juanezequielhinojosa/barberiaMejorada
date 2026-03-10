@@ -205,9 +205,25 @@ gap:40px;
 align-items:center;
 z-index:2;
 flex-wrap:wrap;
+/*flex-wrap:nowrap;*/
 justify-content:center;
+width:100%;
 }
 
+.menu.fixed{
+position:fixed;
+top:0;
+left:0;
+bottom:auto;   /* ESTA LINEA ES LA CLAVE */
+width:100%;
+background:#111;
+padding:15px 0;
+display:flex;
+justify-content:center;
+gap:40px;
+box-shadow:0 4px 10px rgba(0,0,0,0.4);
+z-index:1000;
+}
 .menu a{
 color:white;
 text-decoration:none;
@@ -238,6 +254,8 @@ width:100%;
 color:#c8a25a;
 }
 
+
+
 /* BOTON CTA */
 
 .btn{
@@ -252,6 +270,7 @@ background:#a38349;
 transform:translateY(-2px);
 box-shadow:0 4px 10px rgba(0,0,0,0.4);
 }
+
 
 /* ================= */
 /* SECCION SERVICIOS */
@@ -342,7 +361,7 @@ letter-spacing:2px;
 font-weight:500;
 }
 
-@media (max-width:900px){
+/*@media (max-width:900px){
 
 .servicios-grid{
 grid-template-columns:repeat(2,1fr);
@@ -360,7 +379,7 @@ grid-template-columns:1fr;
 font-size:36px;
 }
 
-}
+}*/
 </style>
 
 </head>
@@ -461,6 +480,23 @@ function reveal() {
 
 window.addEventListener("scroll", reveal);
 reveal(); // ← importante para que funcione al cargar
+</script>
+
+<script>
+const menu = document.querySelector(".menu");
+const hero = document.querySelector(".hero");
+
+window.addEventListener("scroll", () => {
+
+const heroBottom = hero.offsetHeight;
+
+if(window.scrollY > heroBottom - 100){
+menu.classList.add("fixed");
+}else{
+menu.classList.remove("fixed");
+}
+
+});
 </script>
 
 </html>
