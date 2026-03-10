@@ -256,7 +256,12 @@ width:100%;
 color:#c8a25a;
 }
 
-
+.menu-toggle{
+display:none;
+font-size:26px;
+color:white;
+cursor:pointer;
+}
 
 /* BOTON CTA */
 
@@ -382,6 +387,39 @@ font-size:36px;
 }
 
 }
+
+@media (max-width:900px){
+
+.menu{
+flex-direction:column;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#111;
+padding:20px 0;
+gap:25px;
+transform:translateY(-100%);
+transition:0.4s;
+z-index:1000;
+}
+
+.menu.active{
+transform:translateY(0);
+}
+
+.menu-toggle{
+display:block;
+position:absolute;
+top:15px;
+right:25px;
+}
+
+.menu a{
+display:block;
+}
+
+}
 </style>
 
 </head>
@@ -406,7 +444,13 @@ font-size:36px;
 <p>BARBER</p>
 </div>
 
+<div class="menu-toggle">
+<i class="fa-solid fa-bars"></i>
+</div>
+
 <nav class="menu">
+
+
 <a href="#">HOME</a>
 <a href="#">SERVICIOS</a>
 <a href="#">TRABAJOS</a>
@@ -500,5 +544,12 @@ menu.classList.remove("fixed");
 
 });
 </script>
+<script>
+const toggle = document.querySelector(".menu-toggle");
+const menuMobile = document.querySelector(".menu");
 
+toggle.addEventListener("click", () => {
+menuMobile.classList.toggle("active");
+});
+</script>
 </html>
